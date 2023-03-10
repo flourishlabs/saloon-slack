@@ -15,6 +15,6 @@ test('generic get request can be sent', function () {
 
 // Actually calls the real API though :(
 it('returns a custom response object', function () {
-   expect((new SlackConnector('token-goes-here'))->send(new GenericGetRequest('users.info')))
-       ->toBeInstanceOf(SlackResponse::class);
+    expect((new SlackConnector('token-goes-here'))->send(new GenericGetRequest('users.info')))
+        ->toBeInstanceOf(SlackResponse::class);
 });
