@@ -1,10 +1,8 @@
-# Saloon connectors/requests for Slack
+# Saloon for Slack
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/flourishlabs/saloon-slack.svg?style=flat-square)](https://packagist.org/packages/flourishlabs/saloon-slack)
 [![Tests](https://img.shields.io/github/actions/workflow/status/flourishlabs/saloon-slack/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/flourishlabs/saloon-slack/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/flourishlabs/saloon-slack.svg?style=flat-square)](https://packagist.org/packages/flourishlabs/saloon-slack)
-
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
 
 ## Installation
 
