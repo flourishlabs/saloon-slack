@@ -41,7 +41,7 @@ class SlackAuthConnector extends Connector
     public function getSlackUser(OAuthAuthenticator $oauthAuthenticator, string $slackUserId): Response
     {
         // Need to override the request to add the slack user id as it's required - https://api.slack.com/methods/users.info
-        return $this->getUser($oauthAuthenticator, function (GetUserRequest &$request) use ($slackUserId) {
+        return $this->getUser($oauthAuthenticator, function (GetUserRequest $request) use ($slackUserId) {
             $request->body()->add('user', $slackUserId);
         });
     }
