@@ -17,27 +17,30 @@ composer require flourishlabs/saloon-slack
 ## Usage
 
 ```php
-$skeleton = new FlourishLabs\SaloonSlack();
-echo $skeleton->echoPhrase('Hello, FlourishLabs!');
+$connector = new FlourishLabs\SaloonSlack\SlackConnector('token');
+$response = $connector->get('users.info', ['user' => 'W1234567890']);
+
+$response = $connector->get('admin.emoji.add', [
+    'name' => 'pikachu_wave',
+    'url' => 'https://emojis.slackmojis.com/emojis/images/1643514747/7550/pikachu_wave.gif?1643514747',
+]);
+
+$connector->post('chat.postEphemeral', [
+    'channel' => 'C1234567890',
+    'text' => 'Well howdy!',
+    'user' => 'U0HH0WDY',
+]);
 ```
 
 ## Testing
 
 ```bash
-composer test
+vendor/bin/pest
 ```
 
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
 
 ## Credits
 
