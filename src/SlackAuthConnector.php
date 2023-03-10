@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace FlourishLabs\SaloonSlack;
 
-use FlourishLabs\SaloonSlack\Requests\GenericGetRequest;
-use FlourishLabs\SaloonSlack\Requests\GenericPostRequest;
-use FlourishLabs\SaloonSlack\Responses\SlackResponse;
 use Saloon\Contracts\OAuthAuthenticator;
+use Saloon\Contracts\Response;
 use Saloon\Helpers\OAuth2\OAuthConfig;
 use Saloon\Http\Connector;
-use Saloon\Contracts\Response;
 use Saloon\Http\OAuth2\GetUserRequest;
 use Saloon\Traits\OAuth2\AuthorizationCodeGrant;
 
@@ -22,8 +19,7 @@ class SlackAuthConnector extends Connector
         private readonly string $clientId,
         private readonly string $clientSecret,
         private readonly string $redirectUri,
-    )
-    {
+    ) {
     }
 
     // MAKE SURE YOU CALL DEFAULT SCOPES

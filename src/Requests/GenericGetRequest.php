@@ -27,7 +27,6 @@ class GenericGetRequest extends Request implements HasBodyContract
         return $this->slackMethod;
     }
 
-
     public function defaultBody(): array
     {
         return $this->data;
