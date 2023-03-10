@@ -36,4 +36,9 @@ class SlackResponse extends Response implements ResponseContract
     {
         return $this->json('warning', false) !== false;
     }
+
+    public function hasError(): bool
+    {
+        return $this->json('error', false) !== false;
+    }
 }
