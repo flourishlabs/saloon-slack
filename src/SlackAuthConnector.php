@@ -19,9 +19,9 @@ class SlackAuthConnector extends Connector
     use AuthorizationCodeGrant;
 
     public function __construct(
-        private readonly string $clientId,
-        private readonly string $clientSecret,
-        private readonly string $redirectUri,
+        private string $clientId,
+        private string $clientSecret,
+        private string $redirectUri,
     )
     {
     }

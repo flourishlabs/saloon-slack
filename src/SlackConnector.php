@@ -14,7 +14,7 @@ class SlackConnector extends Connector
 {
     protected ?string $response = SlackResponse::class;
 
-    public function __construct(private readonly string $token)
+    public function __construct(private string $token)
     {
         $this->withTokenAuth($this->token);
     }

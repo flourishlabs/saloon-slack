@@ -18,7 +18,7 @@ class GenericGetRequest extends Request implements HasBodyContract
     /**
      * @param  string  $slackMethod - dot notation, such as `users.info`
      */
-    public function __construct(private readonly string $slackMethod, private readonly array $data = [])
+    public function __construct(private string $slackMethod, private array $data = [])
     {
     }
 
