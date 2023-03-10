@@ -7,8 +7,8 @@ namespace FlourishLabs\SaloonSlack;
 use FlourishLabs\SaloonSlack\Requests\GenericGetRequest;
 use FlourishLabs\SaloonSlack\Requests\GenericPostRequest;
 use FlourishLabs\SaloonSlack\Responses\SlackResponse;
-use Saloon\Http\Connector;
 use Saloon\Contracts\Response;
+use Saloon\Http\Connector;
 
 class SlackConnector extends Connector
 {
@@ -21,8 +21,6 @@ class SlackConnector extends Connector
 
     /**
      * View all available methods here: https://api.slack.com/methods
-     *
-     * @return string
      */
     public function resolveBaseUrl(): string
     {
