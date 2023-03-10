@@ -1,8 +1,8 @@
 # Saloon for Slack
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/flourishlabs/saloon-slack.svg?style=flat-square)](https://packagist.org/packages/flourishlabs/saloon-slack)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/flourishlabs/saloon-slack?color=f28d1a&style=flat-square)](https://packagist.org/packages/flourishlabs/saloon-slack)
 [![Tests](https://img.shields.io/github/actions/workflow/status/flourishlabs/saloon-slack/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/flourishlabs/saloon-slack/actions/workflows/run-tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/flourishlabs/saloon-slack.svg?style=flat-square)](https://packagist.org/packages/flourishlabs/saloon-slack)
+[![Total Downloads](https://img.shields.io/packagist/dt/flourishlabs/saloon-slack.svg?color=f28d1a&style=flat-square)](https://packagist.org/packages/flourishlabs/saloon-slack)
 
 ## Installation
 
@@ -15,15 +15,15 @@ composer require flourishlabs/saloon-slack
 ## Usage
 
 ```php
-$connector = new FlourishLabs\SaloonSlack\SlackConnector('token');
-$response = $connector->get('users.info', ['user' => 'W1234567890']);
+$slack = new FlourishLabs\SaloonSlack\SlackConnector('token');
+$response = $slack->get('users.info', ['user' => 'W1234567890']);
 
-$response = $connector->get('admin.emoji.add', [
+$response = $slack->get('admin.emoji.add', [
     'name' => 'pikachu_wave',
     'url' => 'https://emojis.slackmojis.com/emojis/images/1643514747/7550/pikachu_wave.gif?1643514747',
 ]);
 
-$connector->post('chat.postEphemeral', [
+$slack->post('chat.postEphemeral', [
     'channel' => 'C1234567890',
     'text' => 'Well howdy!',
     'user' => 'U0HH0WDY',
