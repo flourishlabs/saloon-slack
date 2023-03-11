@@ -29,7 +29,7 @@ class SlackConnector extends Connector
 
     /**
      * @param  string  $slackMethod - Dot notation, e.g. 'users.info'
-     * @param  array  $data - Array of key value pairs to be converted to form-urlencoded
+     * @param  array  $data - Array of key value pairs to pass to the API
      *
      * @throws \ReflectionException
      * @throws \Saloon\Exceptions\InvalidResponseClassException

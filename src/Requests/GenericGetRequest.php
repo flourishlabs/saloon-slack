@@ -4,15 +4,11 @@ declare(strict_types=1);
 
 namespace FlourishLabs\SaloonSlack\Requests;
 
-use Saloon\Contracts\Body\HasBody as HasBodyContract;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
-use Saloon\Traits\Body\HasFormBody;
 
-class GenericGetRequest extends Request implements HasBodyContract
+class GenericGetRequest extends Request
 {
-    use HasFormBody;
-
     protected Method $method = Method::GET;
 
     /**
@@ -27,7 +23,7 @@ class GenericGetRequest extends Request implements HasBodyContract
         return $this->slackMethod;
     }
 
-    public function defaultBody(): array
+    public function defaultQuery(): array
     {
         return $this->data;
     }

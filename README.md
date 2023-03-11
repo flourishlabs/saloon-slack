@@ -15,7 +15,7 @@ Install the package via composer:
 composer require flourishlabs/saloon-slack
 ```
 
-# Usage
+# Usage - API
 
 ## Instance
 Create an instance
@@ -26,7 +26,7 @@ use FlourishLabs\SaloonSlack\SlackConnector;
 $slack = new SlackConnector('token');
 ```
 
-### Generic GET
+## Generic GET
 ```php
 $response = $slack->get('users.info', ['user' => 'W1234567890']);
 
@@ -36,7 +36,7 @@ $response = $slack->get('admin.emoji.add', [
 ]);
 ```
 
-### Generic POST
+## Generic POST
 ```php
 $slack->post('chat.postEphemeral', [
     'channel' => 'C1234567890',
@@ -47,7 +47,7 @@ $slack->post('chat.postEphemeral', [
 
 ---
 
-### Responses
+## Responses
 Saloon's documentation is best for responses, but there are extra Slack specific methods available too.
 
 The most useful method you'll need is `json`:
@@ -72,6 +72,52 @@ From [Slack docs](https://api.slack.com/web#slack-web-api__evaluating-responses)
       Log::error("Ah poo! {$response->error()}");
   }
     ```
+
+# Usage - OAuth
+
+You can also interact with Slack's OAuth through the `SlackAuthConnector`.
+
+## Instance
+Create an Auth instance
+
+```php
+use FlourishLabs\SaloonSlack\SlackAuthConnector;
+
+$oauth = new SlackAuthConnector(
+    $clientId,
+    $clientSecret,
+    $redirectUri,
+);
+```
+
+## Generate auth URL
+You'll likely want to generate & store `state` in session to verify during token exchange.
+You'll want to redirect the user to this authorization URL
+```php
+$oauth->getSlackAuthorizationUrl(
+    $botScopes,
+    $userScopes,
+);  
+```
+
+## Exchange
+If you need to access the bot _and_ user token you should return the response.
+```php
+$response = $oauth->getAccessToken(
+    code: $request->get('code'),
+    state: $request->get('state'),
+    expectedState: $request->session()->get('slack.auth.state'),
+    returnResponse: true,
+);
+
+$botToken = $response->json('access_token');
+$userToken = $response->json('authed_user.access_token');
+```
+
+If you only need the bot token you can use the standard Saloon setup ([their docs](https://docs.saloon.dev/digging-deeper/oauth2-authentication#verifying-state)).
+```php
+$authenticator = $oauth->getAccessToken($code, $state);
+```
 
 ## Testing
 
