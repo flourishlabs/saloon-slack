@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace FlourishLabs\SaloonSlack\Requests;
 
-class ConversationOpenRequest extends GenericPostRequest
+class ConversationsOpenRequest extends GenericPostRequest
 {
     /**
      * Refs: https://api.slack.com/methods/conversations.open
