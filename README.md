@@ -7,7 +7,6 @@
 # Introduction
 The power of Slack powered by [Saloon](https://docs.saloon.dev/)
 
-
 # Installation
 Install the package via composer:
 
@@ -48,16 +47,14 @@ $slack->post('chat.postEphemeral', [
 ---
 
 ## Responses
-Saloon's documentation is best for responses, but there are extra Slack specific methods available too.
-
-The most useful method you'll need is `json`:
+The most useful method you'll need on a Response object is `json`:
 ```php
 $response->json('channel_id');
 $response->json('message_ts')
 ```
-
 <br/>
 
+[Saloon's documentation](https://docs.saloon.dev/the-basics/responses) is best for responses, but there are extra Slack specific methods available too.
 - `hasWarning(): bool` & `warning(): string`
     From [Slack docs](https://api.slack.com/web#slack-web-api__evaluating-responses): In the case of problematic calls that could still be completed successfully, ok will be true and the warning property will contain a short machine-readable warning code (or comma-separated list of them, in the case of multiple warnings).
     ```php
@@ -117,6 +114,15 @@ $userToken = $response->json('authed_user.access_token');
 If you only need the bot token you can use the standard Saloon setup ([their docs](https://docs.saloon.dev/digging-deeper/oauth2-authentication#verifying-state)).
 ```php
 $authenticator = $oauth->getAccessToken($code, $state);
+```
+
+You can then use these tokens as normal to instantiate a SlackConnector.
+
+```php
+use FlourishLabs\SaloonSlack\SlackConnector;
+
+(new SlackConnector($response->json('access_token')))
+->post('chat.postMessage', ['channel' => 'C123', 'text' => 'Cor, this is good eh']);
 ```
 
 ## Testing
