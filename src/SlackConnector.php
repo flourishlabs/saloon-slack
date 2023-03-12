@@ -6,6 +6,7 @@ namespace FlourishLabs\SaloonSlack;
 
 use FlourishLabs\SaloonSlack\Requests\GenericGetRequest;
 use FlourishLabs\SaloonSlack\Requests\GenericPostRequest;
+use FlourishLabs\SaloonSlack\Requests\UsersInfoRequest;
 use FlourishLabs\SaloonSlack\Responses\SlackResponse;
 use Saloon\Contracts\Response;
 use Saloon\Http\Connector;
@@ -25,6 +26,11 @@ class SlackConnector extends Connector
     public function resolveBaseUrl(): string
     {
         return 'https://slack.com/api/';
+    }
+
+    public function usersInfo(string $slackUserId): Response
+    {
+        return $this->send(new UsersInfoRequest($slackUserId));
     }
 
     /**
