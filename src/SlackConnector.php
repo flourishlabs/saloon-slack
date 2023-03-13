@@ -33,6 +33,22 @@ class SlackConnector extends Connector
         return $this->send(new UsersInfoRequest($slackUserId));
     }
 
+    public function simpleMessage(string $channel, string $message): Response
+    {
+        return $this->post('chat.postMessage', [
+            'channel' => $channel,
+            'text' => $message,
+        ]);
+    }
+
+    public function message(string $channel, array $blocks): Response
+    {
+        return $this->post('chat.postMessage', [
+           'channel' => $channel,
+           'blocks' => json_encode($blocks)
+        ]);
+    }
+
     /**
      * @param  string  $slackMethod - Dot notation, e.g. 'users.info'
      * @param  array  $data - Array of key value pairs to pass to the API
