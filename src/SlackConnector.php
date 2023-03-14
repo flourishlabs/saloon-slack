@@ -41,6 +41,15 @@ class SlackConnector extends Connector
         ]);
     }
 
+    public function ephemeralMessage(string $channel, string $user, string $message): Response
+    {
+        return $this->post('chat.postEphemeral', [
+            'channel' => $channel,
+            'user' => $user,
+            'text' => $message,
+        ]);
+    }
+
     public function message(string $channel, array $blocks): Response
     {
         return $this->post('chat.postMessage', [
