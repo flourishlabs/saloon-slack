@@ -53,8 +53,8 @@ class SlackConnector extends Connector
     public function message(string $channel, array $blocks): Response
     {
         return $this->post('chat.postMessage', [
-           'channel' => $channel,
-           'blocks' => json_encode($blocks)
+            'channel' => $channel,
+            'blocks' => json_encode($blocks),
         ]);
     }
 
