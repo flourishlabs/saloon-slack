@@ -16,8 +16,8 @@ class GenericPostRequest extends Request implements HasBody
     protected Method $method = Method::POST;
 
     /**
-     * @param  string  $slackMethod - dot notation, such as `users.info`
-     * @param  array  $data - will be converted to JSON
+     * @param  string  $slackMethod  - dot notation, such as `users.info`
+     * @param  array  $data  - will be converted to JSON
      */
     public function __construct(private string $slackMethod, private array $data = [])
     {

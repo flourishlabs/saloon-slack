@@ -8,8 +8,8 @@ use FlourishLabs\SaloonSlack\Requests\GenericGetRequest;
 use FlourishLabs\SaloonSlack\Requests\GenericPostRequest;
 use FlourishLabs\SaloonSlack\Requests\UsersInfoRequest;
 use FlourishLabs\SaloonSlack\Responses\SlackResponse;
-use Saloon\Http\Response;
 use Saloon\Http\Connector;
+use Saloon\Http\Response;
 
 class SlackConnector extends Connector
 {
@@ -59,8 +59,8 @@ class SlackConnector extends Connector
     }
 
     /**
-     * @param  string  $slackMethod - Dot notation, e.g. 'users.info'
-     * @param  array  $data - Array of key value pairs to pass to the API
+     * @param  string  $slackMethod  - Dot notation, e.g. 'users.info'
+     * @param  array  $data  - Array of key value pairs to pass to the API
      *
      * @throws \ReflectionException
      * @throws \Saloon\Exceptions\InvalidResponseClassException
@@ -72,8 +72,8 @@ class SlackConnector extends Connector
     }
 
     /**
-     * @param  string  $slackMethod - Dot notation, e.g. 'users.info'
-     * @param  array  $data - Array of key value pairs to pass as JSON
+     * @param  string  $slackMethod  - Dot notation, e.g. 'users.info'
+     * @param  array  $data  - Array of key value pairs to pass as JSON
      *
      * @throws \ReflectionException
      * @throws \Saloon\Exceptions\InvalidResponseClassException

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace FlourishLabs\SaloonSlack;
 
 use Saloon\Contracts\OAuthAuthenticator;
-use Saloon\Http\Response;
 use Saloon\Helpers\OAuth2\OAuthConfig;
 use Saloon\Http\Auth\AccessTokenAuthenticator;
 use Saloon\Http\Connector;
 use Saloon\Http\OAuth2\GetUserRequest;
+use Saloon\Http\Response;
 use Saloon\Traits\OAuth2\AuthorizationCodeGrant;
 
 class SlackAuthConnector extends Connector
@@ -39,18 +39,18 @@ class SlackAuthConnector extends Connector
             ->setUserEndpoint('https://slack.com/api/users.info');
     }
 
-    public function createBotOAuthAuthenticatorFromResponse(Response $response, string $fallbackRefreshToken = null): OAuthAuthenticator
+    public function createBotOAuthAuthenticatorFromResponse(Response $response, ?string $fallbackRefreshToken = null): OAuthAuthenticator
     {
         return new AccessTokenAuthenticator($response->json('access_token'));
     }
 
-    public function createUserOAuthAuthenticatorFromResponse(Response $response, string $fallbackRefreshToken = null): OAuthAuthenticator
+    public function createUserOAuthAuthenticatorFromResponse(Response $response, ?string $fallbackRefreshToken = null): OAuthAuthenticator
     {
         // The base method is protected for some reason, so we have to replicate the code for now for simplicity
         return new AccessTokenAuthenticator($response->json('authed_user.access_token'));
     }
 
-    public function getSlackAuthorizationUrl(array $botScopes = [], array $userScopes = [], string $state = null, array $additionalQueryParameters = []): string
+    public function getSlackAuthorizationUrl(array $botScopes = [], array $userScopes = [], ?string $state = null, array $additionalQueryParameters = []): string
     {
         $queryParams = $additionalQueryParameters;
         if ($userScopes) {
