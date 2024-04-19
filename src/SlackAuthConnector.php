@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace FlourishLabs\SaloonSlack;
 
 use Saloon\Contracts\OAuthAuthenticator;
-use Saloon\Contracts\Response;
+use Saloon\Http\Response;
 use Saloon\Helpers\OAuth2\OAuthConfig;
 use Saloon\Http\Auth\AccessTokenAuthenticator;
 use Saloon\Http\Connector;

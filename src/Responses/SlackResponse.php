@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace FlourishLabs\SaloonSlack\Responses;
 
-use Saloon\Contracts\Response as ResponseContract;
 use Saloon\Http\Response;
-use Saloon\Traits\Responses\HasResponseHelpers;
+use Saloon\Traits\Responses\HasResponse;
 
-class SlackResponse extends Response implements ResponseContract
+class SlackResponse extends Response
 {
-    use HasResponseHelpers;
+    use HasResponse;
 
     public function successful(): bool
     {
